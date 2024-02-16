@@ -20,7 +20,7 @@
         </div>
         <div class="aside__block chat">
             <div class="aside__bar">
-                <div class="bar__title">Акмолинская область</div>
+                <div class="bar__title">Чат | Акмолинская область</div>
                 <ion-icon class="bar__ibtn" name="arrow-down-outline"></ion-icon>
             </div>
             <ol class="chat-container">
@@ -28,14 +28,14 @@
                     <div class="content">
                         <span class="namedtag">Бот</span>
                         <p class="textarea">
-                            Доброго времени суток! Я отвечу на все ваши вопросы по Акмолинской области.
+                            Доброго времени суток! Я отвечу на все ваши вопросы по выбранной области.
                         </p>
                     </div>
                 </li>
             </ol>
 
             <form class="chat-input">
-                <input placeholder="Когда Кокшетау полетит на Марс?...">
+                <input type="text" placeholder="Когда Кокшетау полетит на Марс?...">
                 <button class="submit" type="submit"><ion-icon name="play"></ion-icon></button>
             </form>
         </div>
@@ -44,6 +44,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     
     <script>
+    let lastSide = 1;
+    const paths = document.querySelectorAll('#container .map path')
+    const chat = document.querySelector('.chat-container');
+    const chatInput = document.querySelector('.chat-input')
+    paths.forEach(path => {
+        path.addEventListener("click", () => {
+            console.log('clicked!');
+        })
+    })
+    chatInput.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const message = chatInput.querySelector('input').value;
+        if (!message){ return; }
+
+        appendMessage(0, message)
+        chatInput.querySelector('input').value = "";
+    });
+
+    // side = 0 (user side), = 1 (bot side)
+    function appendMessage(side = 0, text = ''){
+        const sideTag = side == 1 ? "Бот" : "Вы";
+        let namedtag = `<span class="namedtag">${sideTag}</span>`;
+        if(lastSide === side) {
+            namedtag = '';
+        }
+        lastSide = side;
+        const msg = document.createElement('li');
+        msg.id = side == 1 ? "ai" : "user";
+        msg.className = "message";
+        msg.innerHTML = `
+            <div class="content">
+                ${namedtag}
+                <p class="textarea">
+                    ${text}
+                </p>
+            </div>`;
+        chat.append(msg);
+        console.log(msg);
+        chat.scrollTop = chat.scrollHeight;
+    }
     const aside = document.querySelector('#container .aside__block');
     aside.querySelector('.aside__bar .bar__ibtn').addEventListener("click", () => {
         aside.classList.toggle('expanded');
