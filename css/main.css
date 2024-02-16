@@ -24,7 +24,7 @@ a {
         top: 0 !important;
         left:0 !important;
         right:0 !important;
-        height: auto;
+        height: max-content;
         width: 100vw !important;
         border-radius: 0 !important;
     }
