@@ -20,8 +20,11 @@ a {
         padding: 0 !important;
     }
     .aside__block {
-        position: fixed !important;
-        height: auto !important;
+        bottom: unset;
+        top: 0 !important;
+        left:0 !important;
+        right:0 !important;
+        height: auto;
         width: 100vw !important;
         border-radius: 0 !important;
     }
@@ -48,24 +51,25 @@ a {
     position: relative;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    padding: 10px;
-    box-sizing: border-box;
 }
 
 .map {
-    flex: 1;
+    width: 100%;
+    height: 100%;
 }
 
 .aside__block {
-    position: relative;
-    z-index: 2;
+    position: fixed;
+    z-index: 450;
     display: flex;
     flex-direction: column;
     background-color: #fff;
     width: clamp(15.625rem, 9.9432rem + 20.202vw, 28.125rem);
-    height: 100%;
     max-height: 100%;
+    box-sizing: border-box;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
     border-radius: 15px 0 0 15px;
     overflow: hidden;
     box-shadow: rgba(66, 0, 232, 0.2) 0 1px 6px;
@@ -227,20 +231,23 @@ a {
 #container .map .scaleMap .scale-item:hover {
     background-color: #ebebeb;
 }
-
-#container .map svg {
-    position: absolute;
-    transform: translate(0, 0) scale(1); /* Начальный масштаб 1 */
-    transform-origin: center center;
-    cursor: grab;
-}
-#container .map path {
+.leaflet-pane > svg path {
+    pointer-events: auto !important;
     transition: .2s;
 }
-#container .map path:hover {
+.leaflet-pane > svg path:hover {
     fill: rgb(199, 199, 199);
 }
 
+.leaflet-container {
+    background: unset !important;
+}
+
+/* .leaflet-overlay-pane svg {
+    width: 60.5rem !important;
+    height: 33.33125rem !important;
+    transform: unset !important;
+} */
 
 #container .popup {
     position: absolute;
