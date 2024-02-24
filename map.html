@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Акмолинская область | GeoGraph.AI</title>
+    <title>Интерактивный чат | GeoGraph.AI</title>
     <link rel="stylesheet" href="css/main.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -20,7 +20,7 @@
         </div>
         <div class="aside__block chat">
             <div class="aside__bar">
-                <div class="bar__title">Чат | Акмолинская область</div>
+                <div class="bar__title">Ваш ассистент-помощник</div>
                 <ion-icon class="bar__ibtn" name="arrow-down-outline"></ion-icon>
             </div>
             <ol class="chat-container">
@@ -44,60 +44,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     
     <script>
-    let lastSide = 1;
-    const chat = document.querySelector('.chat-container');
-    const chatInput = document.querySelector('.chat-input');
-    let i = 0;
-    document.querySelectorAll('.mappath').forEach(path => {
-        path.addEventListener("click", () => {
-            console.log(path);
-            let area = `coming soon (area: ${i})`;
-            let text = `Вы выбрали: ${area}`;
-            appendMessage(1, text);
-            console.log(text);
-        })
-    })
-    chatInput.addEventListener("submit", e => {
-        e.preventDefault();
-
-        const message = chatInput.querySelector('input').value;
-        if (!message){ return; }
-
-        appendMessage(0, message)
-        chatInput.querySelector('input').value = "";
-    });
-
-    // side = 0 (user side), = 1 (bot side)
-    function appendMessage(side = 0, text = ''){
-        const sideTag = side == 1 ? "Бот" : "Вы";
-        let namedtag = `<span class="namedtag">${sideTag}</span>`;
-        if(lastSide === side) {
-            namedtag = '';
-        }
-        lastSide = side;
-        const msg = document.createElement('li');
-        msg.id = side == 1 ? "ai" : "user";
-        msg.className = "message";
-        msg.innerHTML = `
-            <div class="content">
-                ${namedtag}
-                <p class="textarea">
-                    ${text}
-                </p>
-            </div>`;
-        chat.append(msg);
-        console.log(msg);
-        chat.scrollTop = chat.scrollHeight;
-    }
-    const aside = document.querySelector('#container .aside__block');
-    aside.querySelector('.aside__bar .bar__ibtn').addEventListener("click", () => {
-        aside.classList.toggle('expanded');
-        if(aside.classList.contains('expanded')){
-            aside.querySelector('.aside__bar .bar__ibtn').classList.add('expand');
-        }else{
-            aside.querySelector('.aside__bar .bar__ibtn').classList.remove('expand');
-        }
-    })
     var map = L.map('maps', {
         center: [45.75, -74.2],
         zoom: 13,
@@ -141,6 +87,75 @@
     map.fitBounds(bounds, {
     center: center
     });
+
+
+    let lastSide = 1;
+    const chat = document.querySelector('.chat-container');
+    const chatInput = document.querySelector('.chat-input');
+    let i = 0;
+    document.querySelectorAll('.mappath').forEach(path => {
+        path.addEventListener("click", () => {
+            console.log(path);
+            let area = `coming soon (area: ${i})`;
+            let text = `Вы успешно выбрали на карте Акмолинская область, задавайте вопросы по текущей области.`;
+            appendMessage(1, text);
+            console.log(text);
+        })
+    })
+    chatInput.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const message = chatInput.querySelector('input').value;
+        if (!message){ return; }
+
+        appendMessage(0, message)
+        chatInput.querySelector('input').value = "";
+
+        output = `Акмолинская область богата различными природными ресурсами, среди которых:
+
+Минеральные ресурсы: В этой области объектами горно-железорудной промышленности являются месторождения железных и марганцевых руд, а также медного кварцита.
+
+Уголь: В Акмолинской области расположены месторождения каменного и бурого угля, которые являются основой для развития энергоснабжения региона.
+
+Сельское хозяйство: Почвы области богаты и плодородны, что делает их идеальными для различных сельскохозяйственных деятельностей, включая зерновые культуры, картофель и овощные культуры.
+
+Акмолинская область также известна своими запасами строительных материалов, таких как песок, гравий и известняк.
+
+В целом, Акмолинская область богата разнообразными природными ресурсами, которые играют важную роль в её экономике.`;
+        setTimeout(()=>{appendMessage(1, output)},"1400");
+    });
+
+    // side = 0 (user side), = 1 (bot side)
+    function appendMessage(side = 0, text = ''){
+        const sideTag = side == 1 ? "Бот" : "Вы";
+        let namedtag = `<span class="namedtag">${sideTag}</span>`;
+        if(lastSide === side) {
+            namedtag = '';
+        }
+        lastSide = side;
+        const msg = document.createElement('li');
+        msg.id = side == 1 ? "ai" : "user";
+        msg.className = "message";
+        msg.innerHTML = `
+            <div class="content">
+                ${namedtag}
+                <p class="textarea">
+                    ${text}
+                </p>
+            </div>`;
+        chat.append(msg);
+        console.log(msg);
+        chat.scrollTop = chat.scrollHeight;
+    }
+    const aside = document.querySelector('#container .aside__block');
+    aside.querySelector('.aside__bar .bar__ibtn').addEventListener("click", () => {
+        aside.classList.toggle('expanded');
+        if(aside.classList.contains('expanded')){
+            aside.querySelector('.aside__bar .bar__ibtn').classList.add('expand');
+        }else{
+            aside.querySelector('.aside__bar .bar__ibtn').classList.remove('expand');
+        }
+    })
     </script>
 </body>
 </html>
