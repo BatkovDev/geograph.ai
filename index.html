@@ -12,7 +12,7 @@
 <body class="col-1920">
     <header class="header" id="head">
         <a href="./index.html" class="logo">
-            <img src="./img/logo.png" alt="Interactive Map App"></a>
+            <img src="./img/Logotype.svg" alt="Interactive Map App"></a>
         <button class="burger-menu"><ion-icon name="reorder-three-outline"></ion-icon></button>
         <ul class="nav">
             <li class="nav-link"><a href="#hero">Главная</a></li>
@@ -23,35 +23,25 @@
         </ul>
     </header>
     <section id="hero">
-        <img src="./img/banner.jpg" alt="Geograph" class="hero-bg">
         <div class="section--hero">
-            <h2 class="hero--excerpt">Интерактивная карта</h2>
-            <h1 class="hero--title">GeoGraph</h1>
-            <p class="hero--description">Наша цель - сделать изучение географии увлекательным, доступным и эффективным, обеспечивая пользователям интерактивные инструменты, персонализированный подход и высококачественный контент.</p>
+            <h1 class="hero--title">GeoGraph.AI</h1>
+            <p class="hero--description">Мы делаем изучение географии увлекательным, доступным и эффективным, обеспечивая пользователям интерактивные инструменты, персонализированный подход и высококачественный контент.</p>
             <a href="./map.html"><button class="hero--button">Попробовать</button></a>
+        </div>
+        <div class="gridbox">
+            <div class="gridbox-item"><img src="./img/image-01.jpg"></div>
+            <div class="gridbox-item"><img src="./img/image-02.jpg"></div>
+            <div class="gridbox-item"><img src="./img/image-03.jpg"></div>
+            <div class="gridbox-item"><img src="./img/image-04.jpg"></div>
+            <div class="gridbox-item"><img src="./img/image-05.jpg"></div>
         </div>
     </section>
 
-    <section id="about">
-        <h2 class="about--title">О нас</h2>
-        <ul class="about--box">
-            <li class="about--box-item">
-                <p>GeoGraph.AI нацелена на разработку технологической платформы, которая поможет в освоении географии с применением искусственного интеллекта и инновационных методов обучения.</p>
-            </li>
-            <li class="about--box-item">
-                <p>Наша платформа интегрирует искусственный интеллект и виртуальное реальность (VR), обеспечивая интерактивный и удобный интерфейс для пользователей. Мы стремимся создать пространство, где пользователи могут наслаждаться инновационными технологиями, взаимодействовать с контентом и получать удовольствие от платформы.</p>
-            </li>
-            <li class="about--box-item">
-                <p>Наши усилия направлены на то, чтобы предложить пользователям уникальный опыт, включающий интерактивные возможности, персонализированный подход и высококачественный контент. Мы стремимся стать ведущей платформой в сфере образования, предлагая инновационные инструменты и ресурсы, которые позволят нашим пользователям не только углубить свои знания о географии, но и вдохновиться ею для дальнейших исследований и достижений.</p>
-            </li>
-            <li class="about--box-item">
-                <p>Мы создаем платформу для легкого и интересного изучения географии Казахстана. Наша команда состоит из географов, программистов и специалистов по искусственному интеллекту. Мы уверены в силе современных технологий, которые помогут сделать обучение географии увлекательным и эффективным для всех.</p>
-            </li>
-        </ul>
-    </section>
     <section id="features">
-        <h2 class="features--title">Особенности</h2>
-        <p class="features--description">Наша команда постоянно адаптирует сервис GeoGraph.AI под потребности всех пользователей.</p>
+        <div class="content">
+            <h2 class="features--title">Особенности</h2>
+            <p class="features--description">Наша команда постоянно адаптирует сервис GeoGraph.AI под потребности всех пользователей.</p>
+        </div>
         <!-- 
             icons website: https://ionic.io/ionicons
          -->
@@ -79,8 +69,28 @@
             </li>
         </ul>
     </section>
+
+    <section id="about">
+        <div class="left">
+            <h3>Кто мы?</h3>
+            <h2>Мы стремимся стать ведущей платформой в сфере образования</h2>
+            <ul class="about--box">
+                <li class="about--box-item">
+                    <p>GeoGraph.AI нацелена на разработку технологической платформы, которая поможет в освоении географии с применением искусственного интеллекта и инновационных методов обучения.</p>
+                </li>
+                <li class="about--box-item">
+                    <p>Наша платформа интегрирует искусственный интеллект и виртуальное реальность (VR), обеспечивая интерактивный и удобный интерфейс для пользователей. Мы стремимся создать пространство, где пользователи могут наслаждаться инновационными технологиями, взаимодействовать с контентом и получать удовольствие от платформы.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <img src="./img/banner-2.jpg" alt="" class="banner">
+            <h2>Инновационная платформа для изучения географии Казахстана</h2>
+        </div>
+    </section>
     <section id="testimonials">
-        <h2 class="testimonials--title">Почитайте наши отзывы</h2>
+        <h3>Наши пользователи</h3>
+        <h2>Почитайте наши отзывы</h2>
         <div class="btns">
             <button class="testimonials--button-scroll prev"><ion-icon name="caret-back"></ion-icon></button>
             <button class="testimonials--button-scroll next"><ion-icon name="caret-forward"></ion-icon></button>
@@ -109,7 +119,7 @@
                 <p class="testimonial">Этот веб-сервис - настоящий находка для всех, кто интересуется географией Казахстана! Интерактивная карта с искусственным интеллектом делает изучение такой обширной страны легким и увлекательным. Очень полезно для студентов и просто любознательных.</p>
             </li>
             <li class="testimonials--slider-item">
-                <div class="name">Abylaikhan Sagitovich</div>
+                <div class="name">Juniors.kz</div>
                 <ul class="stars">
                     <li><ion-icon name="star"></ion-icon></li>
                     <li><ion-icon name="star"></ion-icon></li>
